@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+data/
+results/*.pkl
+*.pdf
+.DS_Store
+manuscript/node_modules/
