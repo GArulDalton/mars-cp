@@ -1,5 +1,9 @@
 # MARS-CP: Regime Switching Online Conformal Prediction with Test Martingales
 
+[![tests](https://github.com/GArulDalton/mars-cp/actions/workflows/tests.yml/badge.svg)](https://github.com/GArulDalton/mars-cp/actions/workflows/tests.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Python 3.10–3.12](https://img.shields.io/badge/python-3.10%E2%80%933.12-blue.svg)](requirements.txt)
+
 Official implementation of the paper
 
 > **Regime Switching Online Conformal Prediction with Test Martingales**
@@ -42,7 +46,9 @@ mars-cp/
 ├── results/               # per-seed results used in the paper
 ├── figures/               # Figs. 1–7 (600 dpi)
 ├── manuscript/            # Node.js scripts that build the Word manuscript and cover letter
-├── run_all.sh             # reproduces every number, table and figure
+├── run_all.sh             # reproduces every number, table and figure (Linux/macOS)
+├── run_all.bat            # same, for Windows
+├── .github/workflows/     # continuous integration: tests on Python 3.10–3.12
 ├── requirements.txt  CITATION.cff  LICENSE
 ```
 
@@ -76,9 +82,19 @@ Main arguments of `mars_cp`: `inner` (`"aci"`, `"qt"`, `"dtaci"`), `delta` (fals
 
 ## Reproducing the paper
 
+Linux / macOS:
+
 ```bash
 ./run_all.sh            # full run, about 15–25 minutes on one CPU core
 QUICK=1 ./run_all.sh    # fewer seeds, a few minutes (numbers will differ slightly)
+python -m pytest -q tests
+```
+
+Windows (Command Prompt):
+
+```bat
+run_all.bat
+REM quick check:  set QUICK=1 && run_all.bat
 python -m pytest -q tests
 ```
 
